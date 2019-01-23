@@ -2,15 +2,60 @@ window.onload = function() {
     var np = new Vue({
         el: '#tall',
         data: {
-
+            firstmsg: '', //第二部分第一条数据
+            msgsnext: [], // 第二部分剩下所有数据
+            workmsgs: [], //程序员要问
+            recommand: [], //特别推荐
+            resnews: [], //最新推荐
+            bowen: [], //博文
         },
         methods: {
+            showfir: function() {
+                axios.get('/api/showfirstmsg', {
+                    params: {
+                        id: '1',
+                    }
+                }).then(function(resp) {
+                    np.firstmsg = resp.data
+                })
+            },
+            shownext: function() {
+                axios.get('/api/showmsgnext').then(function(resp) {
+                    np.msgsnext = resp.data
+                })
+            },
+            showworkmsgs: function() {
+                axios.get('/api/workmsgs').then(function(resp) {
+                    np.workmsgs = resp.data
+                })
+            },
+            showRecommand: function() {
+                axios.get('/api/showrecommand').then(function(resp) {
+                    np.recommand = resp.data
+                })
+            },
+            showresnews: function() {
+                axios.get('/api/showresnews').then(function(resp) {
+                    np.resnews = resp.data
+                })
+            },
+            showbowen: function() {
+                axios.get('/api/showbowen').then(function(resp) {
+                    console.log(resp.data)
+                    np.bowen = resp.data
+                })
+            }
 
         },
-        moounted: function() {
-
+        mounted: function() {
+            this.showfir();
+            this.shownext();
+            this.showworkmsgs();
+            this.showRecommand();
+            this.showresnews();
+            this.showbowen();
         }
-    });
+    })
     $(document).ready(function() {
 
         //banner

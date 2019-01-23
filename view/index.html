@@ -11,8 +11,10 @@
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/jquery.easyfader.min.js"></script>
     <script src="/static/js/hc-sticky.js"></script>
-    <script src="/static/js/comm.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.16.2/axios.min.js"></script>
     <script src="/static/js/scrollReveal.js"></script>
+    <script src="/static/js/comm.js"></script>
     <script src="/static/layui/layui.js"></script>
 </head>
 
@@ -89,10 +91,10 @@
                     <div class="abme">
                         <p class="abme-c1">我的名片</p>
                         <br>
-                        <p class="abme-c2">网名：DanceSmile | 即步非烟</p>
-                        <p class="abme-c2">网名：DanceSmile | 即步非烟</p>
-                        <p class="abme-c2">网名：DanceSmile | 即步非烟</p>
-                        <p class="abme-c2">网名：DanceSmile | 即步非烟</p>
+                        <p class="abme-c2">姓名：林重阳</p>
+                        <p class="abme-c2">年龄：22岁</p>
+                        <p class="abme-c2">性别：男</p>
+                        <p class="abme-c2">爱好：健身/做网站/听歌/旅游</p>
                         <div class="icons">
                             <a href=""><img src="/static/img/github-fill.png" alt=""></a>
                             <a href=""><img src="/static/img/wechat-fill.png" alt=""></a>
@@ -105,81 +107,39 @@
                 <div class="blogs1" data-scroll-reveal="enter bottom over 1s">
                     <div class="layui-tab layui-tab-card" style="width:75%;">
                         <ul class="layui-tab-title">
-                            <li class="layui-this">网站设置</li>
-                            <li>用户管理</li>
-                            <li>权限分配</li>
-                            <li>商品管理</li>
-                            <li>订单管理</li>
+                            <li class="layui-this">html5/css3</li>
+                            <li>Golang后台</li>
+                            <li>Python爬虫</li>
+                            <li>Python数据处理</li>
+                            <li>微信小程序</li>
                         </ul>
                         <div class="layui-tab-content" style="height: 300px;position: relative;">
                             <div class="layui-tab-item layui-show">
                                 <div class="blogs1-ch1-imgs">
                                     <div class="blogs1-ch1-imgs-chs1">
-                                        <img src="/static/img/kapian/bg2.jpg" alt="">
-                                        <p>疤痕的发布水电费</p>
+                                        <img :src="firstmsg.imgs1" alt="">
+                                        <p>{{firstmsg.msgs1}}</p>
                                     </div>
                                     <div class="blogs1-ch1-imgs-chs1">
-                                        <img src="/static/img/kapian/bg5.jpg" alt="">
-                                        <p>你说的妇女解放</p>
+                                        <img :src="firstmsg.imgs2" alt="">
+                                        <p>{{firstmsg.msgs2}}</p>
                                     </div>
                                 </div>
-                                <div class="blogs1-ch1-msg">比赛的覅几倍你圣诞节方柏霓你的世界杯覅金山毒霸不近似的开发比较少</div>
+                                <div class="blogs1-ch1-msg">{{firstmsg.moremsgs}}</div>
                             </div>
-
-                            <div class="layui-tab-item">
+                            <div class="layui-tab-item" v-for="nex in msgsnext">
                                 <div class="blogs1-ch1-imgs">
                                     <div class="blogs1-ch1-imgs-chs1">
-                                        <img src="/static/img/kapian/bg1.jpg" alt="">
-                                        <p>你说的妇女解放</p>
+                                        <img :src="nex.imgs1" alt="">
+                                        <p>{{nex.msgs1}}</p>
                                     </div>
                                     <div class="blogs1-ch1-imgs-chs1">
-                                        <img src="/static/img/kapian/bg1.jpg" alt="">
-                                        <p>你说的妇女解放</p>
+                                        <img :src="nex.imgs2" alt="">
+                                        <p>{{nex.msgs2}}</p>
                                     </div>
                                 </div>
-                                <div class="blogs1-ch1-msg">sdfdsfsda电饭锅电饭锅电饭锅电饭锅电饭锅</div>
+                                <div class="blogs1-ch1-msg">{{nex.moremsgs}}</div>
                             </div>
-                        </div>
-                        <div class="layui-tab-item">
-                            <div class="blogs1-ch1-imgs">
-                                <div class="blogs1-ch1-imgs-chs1">
-                                    <img src="/static/img/kapian/bg1.jpg" alt="">
-                                    <p>你说的妇女解放</p>
-                                </div>
-                                <div class="blogs1-ch1-imgs-chs1">
-                                    <img src="/static/img/kapian/bg1.jpg" alt="">
-                                    <p>你说的妇女解放</p>
-                                </div>
-                            </div>
-                            <div class="blogs1-ch1-msg">sdfdsfsda电饭锅电饭锅电饭锅电饭锅电饭锅</div>
-                        </div>
-
-                        <div class="layui-tab-item">
-                            <div class="blogs1-ch1-imgs">
-                                <div class="blogs1-ch1-imgs-chs1">
-                                    <img src="/static/img/kapian/bg1.jpg" alt="">
-                                    <p>你说的妇女解放</p>
-                                </div>
-                                <div class="blogs1-ch1-imgs-chs1">
-                                    <img src="/static/img/kapian/bg1.jpg" alt="">
-                                    <p>你说的妇女解放</p>
-                                </div>
-                            </div>
-                            <div class="blogs1-ch1-msg">sdfdsfsda电饭锅电饭锅电饭锅电饭锅电饭锅</div>
-                        </div>
-
-                        <div class="layui-tab-item">
-                            <div class="blogs1-ch1-imgs">
-                                <div class="blogs1-ch1-imgs-chs1">
-                                    <img src="/static/img/kapian/bg1.jpg" alt="">
-                                    <p>你说的妇女解放</p>
-                                </div>
-                                <div class="blogs1-ch1-imgs-chs1">
-                                    <img src="/static/img/kapian/bg1.jpg" alt="">
-                                    <p>你说的妇女解放</p>
-                                </div>
-                            </div>
-                            <div class="blogs1-ch1-msg">sdfdsfsda电饭锅电饭锅电饭锅电饭锅电饭锅</div>
                         </div>
                     </div>
 
@@ -188,21 +148,10 @@
                             <h2>程序猿要闻</h2>
                             <div class="hline"></div>
                             <ul class="blogs2-msgs">
-                                <a href="">
-                                    <li>·&nbsp;&nbsp;花奴ID是否hiU盾</li>
+                                <a href="ms.hrefs" v-for="ms in workmsgs">
+                                    <li>·&nbsp;&nbsp;{{ms.msgs}}</li>
                                 </a>
-                                <a href="">
-                                    <li>·&nbsp;&nbsp;花奴ID是否hiU盾</li>
-                                </a>
-                                <a href="">
-                                    <li>·&nbsp;&nbsp;花奴ID是否hiU盾</li>
-                                </a>
-                                <a href="">
-                                    <li>·&nbsp;&nbsp;花奴ID是否hiU盾</li>
-                                </a>
-                                <a href="">
-                                    <li>·&nbsp;&nbsp;花奴ID是否hiU盾</li>
-                                </a>
+
                             </ul>
                         </div>
                     </div>
@@ -214,54 +163,15 @@
                             <p>特别推荐</p>
                         </div>
                         <ul>
-                            <li>
-                                <img src="/static/img/kapian/bg1.jpg" alt="">
+                            <li v-for="esc in recommand">
+                                <img :src="esc.imgs" alt="">
                                 <div class="blogs3-ch1-msg">
-                                    <div class="sss">【hi爱上的地方hi地方】</div>
-                                    是打发你加上对方表白是你带积分你是大部分你是叫对方我比方说的基本水电费
+                                    <div class="sss">{{esc.title}}</div>
+                                    {{esc.msgs}}
                                 </div>
-                                <div class="navas">+文章阅读</div>
+                                <a :href="esc.hrefs" class="navas">+文章阅读</a>
                             </li>
-                            <li>
-                                <img src="/static/img/kapian/bg1.jpg" alt="">
-                                <div class="blogs3-ch1-msg">
-                                    <div class="sss">【hi爱上的地方hi地方】</div>
-                                    是打发你加上对方表白是你带积分你是大部分你是叫对方我比方说的基本水电费
-                                </div>
-                                <div class="navas">+文章阅读</div>
-                            </li>
-                            <li>
-                                <img src="/static/img/kapian/bg1.jpg" alt="">
-                                <div class="blogs3-ch1-msg">
-                                    <div class="sss">【hi爱上的地方hi地方】</div>
-                                    是打发你加上对方表白是你带积分你是大部分你是叫对方我比方说的基本水电费
-                                </div>
-                                <div class="navas">+文章阅读</div>
-                            </li>
-                            <li>
-                                <img src="/static/img/kapian/bg1.jpg" alt="">
-                                <div class="blogs3-ch1-msg">
-                                    <div class="sss">【hi爱上的地方hi地方】</div>
-                                    是打发你加上对方表白是你带积分你是大部分你是叫对方我比方说的基本水电费
-                                </div>
-                                <div class="navas">+文章阅读</div>
-                            </li>
-                            <li>
-                                <img src="/static/img/kapian/bg1.jpg" alt="">
-                                <div class="blogs3-ch1-msg">
-                                    <div class="sss">【hi爱上的地方hi地方】</div>
-                                    是打发你加上对方表白是你带积分你是大部分你是叫对方我比方说的基本水电费
-                                </div>
-                                <div class="navas">+文章阅读</div>
-                            </li>
-                            <li>
-                                <img src="/static/img/kapian/bg1.jpg" alt="">
-                                <div class="blogs3-ch1-msg">
-                                    <div class="sss">【hi爱上的地方hi地方】</div>
-                                    是打发你加上对方表白是你带积分你是大部分你是叫对方我比方说的基本水电费
-                                </div>
-                                <div class="navas">+文章阅读</div>
-                            </li>
+
                         </ul>
                     </div>
 
@@ -273,55 +183,15 @@
                             <p>这就是阿萨德阿斯蒂芬</p>
                         </div>
                         <ul class="blogs3-ch2-ul">
-                            <a href="">
+                            <a href="news.hrefs" v-for="news in resnews">
                                 <li>
                                     <div class="sasa">
-                                        <img src="/static/img/kapian/bg2.jpg" alt="">
+                                        <img :src="news.imgs" alt="">
                                     </div>
-                                    <h6>你说的你飞机上大半年你说的吉峰农机式电脑</h6>
-                                </li>
-                            </a>
-                            <a href="">
-                                <li>
-                                    <div class="sasa">
-                                        <img src="/static/img/kapian/bg2.jpg" alt="">
-                                    </div>
-                                    <h6>你说的你飞机上大半年你说的吉峰农机式电脑</h6>
-                                </li>
-                            </a>
-                            <a href="">
-                                <li>
-                                    <div class="sasa">
-                                        <img src="/static/img/kapian/bg2.jpg" alt="">
-                                    </div>
-                                    <h6>你说的你飞机上大半年你说的吉峰农机式电脑</h6>
+                                    <h6>{{news.msgs}}</h6>
                                 </li>
                             </a>
 
-                            <a href="">
-                                <li>
-                                    <div class="sasa">
-                                        <img src="/static/img/kapian/bg2.jpg" alt="">
-                                    </div>
-                                    <h6>你说的你飞机上大半年你说的吉峰农机式电脑</h6>
-                                </li>
-                            </a>
-                            <a href="">
-                                <li>
-                                    <div class="sasa">
-                                        <img src="/static/img/kapian/bg2.jpg" alt="">
-                                    </div>
-                                    <h6>你说的你飞机上大半年你说的吉峰农机式电脑</h6>
-                                </li>
-                            </a>
-                            <a href="">
-                                <li>
-                                    <div class="sasa">
-                                        <img src="/static/img/kapian/bg2.jpg" alt="">
-                                    </div>
-                                    <h6>你说的你飞机上大半年你说的吉峰农机式电脑</h6>
-                                </li>
-                            </a>
                         </ul>
                     </div>
                 </div>
@@ -336,70 +206,23 @@
                         <p>最新博文</p>
                     </div>
                     <ul class="nav-margs-ch1-ul">
-                        <li>
+                        <li v-for="bw in bowen">
                             <div class="nav-tall-ch2-all">
                                 <div class="nav-tall-ch2-imgs">
-                                    <img src="/static/img/kapian/bg4.jpg" alt="">
+                                    <img :src="bw.imgs" alt="">
                                     <div class="smbles">个人博客日记</div>
                                 </div>
                                 <div class="nav-tall-ch2-msg">
-                                    <p>北师大版地方不是地方保护就是大部分省部级地方</p>
+                                    <p>{{bw.msgs}}</p>
                                     <div class="time">2016-15-4</div>
-                                    <a href="" class="more-msgs">
+                                    <a :href="bw.hrefs" class="more-msgs">
                                         <span>阅读更多</span>
                                     </a>
                                 </div>
 
                             </div>
                         </li>
-                        <li>
-                            <div class="nav-tall-ch2-all">
-                                <div class="nav-tall-ch2-imgs">
-                                    <img src="/static/img/kapian/bg4.jpg" alt="">
-                                    <div class="smbles">个人博客日记</div>
-                                </div>
-                                <div class="nav-tall-ch2-msg">
-                                    <p>北师大版地方不是地方保护就是大部分省部级地方</p>
-                                    <div class="time">2016-15-4</div>
-                                    <a href="" class="more-msgs">
-                                        <span>阅读更多</span>
-                                    </a>
-                                </div>
 
-                            </div>
-                        </li>
-                        <li>
-                            <div class="nav-tall-ch2-all">
-                                <div class="nav-tall-ch2-imgs">
-                                    <img src="/static/img/kapian/bg4.jpg" alt="">
-                                    <div class="smbles">个人博客日记</div>
-                                </div>
-                                <div class="nav-tall-ch2-msg">
-                                    <p>北师大版地方不是地方保护就是大部分省部级地方</p>
-                                    <div class="time">2016-15-4</div>
-                                    <a href="" class="more-msgs">
-                                        <span>阅读更多</span>
-                                    </a>
-                                </div>
-
-                            </div>
-                        </li>
-                        <li>
-                            <div class="nav-tall-ch2-all">
-                                <div class="nav-tall-ch2-imgs">
-                                    <img src="/static/img/kapian/bg4.jpg" alt="">
-                                    <div class="smbles">个人博客日记</div>
-                                </div>
-                                <div class="nav-tall-ch2-msg">
-                                    <p>北师大版地方不是地方保护就是大部分省部级地方</p>
-                                    <div class="time">2016-15-4</div>
-                                    <a href="" class="more-msgs">
-                                        <span>阅读更多</span>
-                                    </a>
-                                </div>
-
-                            </div>
-                        </li>
 
                     </ul>
                 </div>
