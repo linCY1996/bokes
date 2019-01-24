@@ -931,7 +931,7 @@ li {
 #btn {
     position: absolute;
     bottom: 23px;
-    left: 39px;
+    left: 255px;
     width: 132px;
     height: 37px;
     color: white;
@@ -978,4 +978,74 @@ li {
 .cd-top.cd-is-visible {
     visibility: visible;
     opacity: 1;
+}
+
+.showly {
+    width: 46%;
+    height: 381px;
+    /* border: 1px solid black; */
+    position: absolute;
+    top: 96px;
+    right: 35px;
+}
+
+.showmsgs {
+    width: 94%;
+    height: 320px;
+    margin-top: 10px;
+    margin-left: 3%;
+    border-left: 1px dashed rgb(189, 189, 189);
+}
+
+.showmsgs ul {
+    overflow: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid rgb(156, 156, 156); */
+}
+
+.showmsgs ul li {
+    font-size: 1.3em;
+    text-overflow: ellipsis;
+    min-height: 90px;
+    overflow: hidden;
+    width: 99%;
+    border: 1px dashed rgb(190, 190, 190);
+    margin-top: 7px;
+}
+
+.usermsgs {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+    width: 200px;
+    height: 50px;
+}
+
+.umsgs {
+    width: 120px;
+    height: 50px;
+    margin-right: 17px;
+}
+
+.txiang {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 50% 50%;
+    border: 2px inset black;
+}
+
+.txiang img {
+    width: 50px;
+    height: 50px;
+}
+
+.fenye {
+    width: 50%;
+    height: 38px;
+    margin-left: 25%;
+    margin-top: 4px;
+    border: 1px solid black;
 }

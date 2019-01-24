@@ -123,7 +123,7 @@ type Myself struct {
 	Address   string `json:"address" xml:"address"`
 	Rightname string `json:"rightname" xml:"rightname"`
 	Msgs      string `json:"msgs" xml:"msgs"`
-	Imgs string `json:"imgs" form:"imgs"`
+	Imgs      string `json:"imgs" form:"imgs"`
 }
 
 func ShowMyself() (Myself, error) {
@@ -144,4 +144,11 @@ type Liuyan struct {
 func SendLY(name, email, msgs, time string) error {
 	_, err := DB.Exec("insert into liuyan(`name`, `email`, `msgs`, `time`) values(?,?,?,?)", name, email, msgs, time)
 	return err
+}
+
+//显示用户留言信息
+func ShowUsermsgs() ([]Liuyan, error) {
+	mod := make([]Liuyan, 0)
+	err := DB.Select(&mod, `select * from liuyan`)
+	return mod, err
 }

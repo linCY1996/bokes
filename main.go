@@ -19,6 +19,7 @@ func main() {
 	http.HandleFunc(`/api/timecar`, control.ShowTimeCar)          //时间轴信息
 	http.HandleFunc(`/api/myself`, control.ShowMyself)            //显示个人信息
 	http.HandleFunc(`/api/sendmsg`, control.SendLY)               //发送留言信息
+	http.HandleFunc(`/api/usermsgs`, control.ShowUserMsgs)        //显示用户留言信息
 
 	http.ListenAndServe(`:80`, nil)
 }

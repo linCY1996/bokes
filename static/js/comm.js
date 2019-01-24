@@ -13,6 +13,7 @@ window.onload = function() {
             name: '',
             email: '',
             msgs: '',
+            usermsgs: [], //用户留言
         },
         methods: {
             showfir: function() {
@@ -67,7 +68,13 @@ window.onload = function() {
                 axios.post('/api/sendmsg', params).then(function(resp) {
                     alert(resp.data)
                 })
-            }
+            },
+            showusermsgs: function(resp) {
+                axios.get('/api/usermsgs').then(function(resp) {
+                    console.log(resp.data)
+                    np.usermsgs = resp.data
+                })
+            },
 
         },
         mounted: function() {
@@ -79,6 +86,7 @@ window.onload = function() {
             this.showbowen();
             this.showtimecar();
             this.showmyself();
+            this.showusermsgs();
         }
     })
     $(document).ready(function() {

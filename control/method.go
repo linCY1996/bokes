@@ -138,3 +138,15 @@ func SendLY(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Write([]byte(`发送成功`))
 }
+
+//显示用户留言信息
+func ShowUserMsgs(w http.ResponseWriter, r *http.Request) {
+	mod, err := model.ShowUsermsgs()
+	if err != nil {
+		w.Write([]byte("查询信息失败"))
+		return
+	}
+	w.Header().Set(`Content-Type`, `application/json`)
+	md, _ := json.Marshal(mod)
+	w.Write(md)
+}

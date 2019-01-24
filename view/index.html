@@ -277,9 +277,29 @@
                     <input type="text" name="email" id="email" v-model="email" placeholder="请输入您的邮箱">
                     <br>
                     <br>
-                    <textarea name="msgss" id="msgss" v-model="msgs" cols="130" rows="18"></textarea>
+                    <textarea name="msgss" id="msgss" v-model="msgs" cols="85" rows="18"></textarea>
                 </div>
                 <button type="button" v-on:click="btn()" id="btn">点击提交</button>
+                <div class="showly">
+                    <div class="showmsgs">
+                        <ul>
+                            <li v-for="um in usermsgs">
+                                <div class="usermsgs">
+                                    <div class="txiang">
+                                        <img src="/static/img/kapian/bg1.jpg" alt="">
+                                    </div>
+                                    <div class="umsgs">
+                                        <p>{{um.name}}</p>
+                                        <p>{{um.time}}</p>
+                                    </div>
+                                </div>
+                                <h3 style="margin-top:8px;font-size: .9em;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{um.msgs}}</h3>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="fenye"></div>
+                </div>
             </div>
         </div>
         <a href="" class="cd-top"></a>
