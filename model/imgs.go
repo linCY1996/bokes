@@ -123,6 +123,7 @@ type Myself struct {
 	Address   string `json:"address" xml:"address"`
 	Rightname string `json:"rightname" xml:"rightname"`
 	Msgs      string `json:"msgs" xml:"msgs"`
+	Imgs string `json:"imgs" form:"imgs"`
 }
 
 func ShowMyself() (Myself, error) {

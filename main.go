@@ -16,6 +16,9 @@ func main() {
 	http.HandleFunc(`/api/showrecommand`, control.ShowRecommend)  // 特别推荐消息
 	http.HandleFunc(`/api/showresnews`, control.ShowNewRecommend) //显示最新推荐信息
 	http.HandleFunc(`/api/showbowen`, control.ShowBowen)          //博文
+	http.HandleFunc(`/api/timecar`, control.ShowTimeCar)          //时间轴信息
+	http.HandleFunc(`/api/myself`, control.ShowMyself)            //显示个人信息
+	http.HandleFunc(`/api/sendmsg`, control.SendLY)               //发送留言信息
 
 	http.ListenAndServe(`:80`, nil)
 }

@@ -8,6 +8,11 @@ window.onload = function() {
             recommand: [], //特别推荐
             resnews: [], //最新推荐
             bowen: [], //博文
+            timecar: [], //时间轴
+            myself: '', //个人信息
+            name: '',
+            email: '',
+            msgs: '',
         },
         methods: {
             showfir: function() {
@@ -41,8 +46,26 @@ window.onload = function() {
             },
             showbowen: function() {
                 axios.get('/api/showbowen').then(function(resp) {
-                    console.log(resp.data)
                     np.bowen = resp.data
+                })
+            },
+            showtimecar: function() {
+                axios.get('/api/timecar').then(function(resp) {
+                    np.timecar = resp.data
+                })
+            },
+            showmyself: function() {
+                axios.get('/api/myself').then(function(resp) {
+                    np.myself = resp.data
+                })
+            },
+            btn: function() {
+                var params = new URLSearchParams();
+                params.append('name', np.name);
+                params.append('email', np.email);
+                params.append('msgs', np.msgs);
+                axios.post('/api/sendmsg', params).then(function(resp) {
+                    alert(resp.data)
                 })
             }
 
@@ -54,6 +77,8 @@ window.onload = function() {
             this.showRecommand();
             this.showresnews();
             this.showbowen();
+            this.showtimecar();
+            this.showmyself();
         }
     })
     $(document).ready(function() {

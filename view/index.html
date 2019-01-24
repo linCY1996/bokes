@@ -210,12 +210,13 @@
                             <div class="nav-tall-ch2-all">
                                 <div class="nav-tall-ch2-imgs">
                                     <img :src="bw.imgs" alt="">
-                                    <div class="smbles">个人博客日记</div>
+                                    <div class="smbles" style="font-size:1em;">个人博客日记</div>
                                 </div>
                                 <div class="nav-tall-ch2-msg">
-                                    <p>{{bw.msgs}}</p>
+                                    <h3 style="font-weight:bolder;font-size:1.4em;">{{bw.title}}</h3>
+                                    <p style="font-size:1.3em;">{{bw.msgs}}</p>
                                     <div class="time">2016-15-4</div>
-                                    <a :href="bw.hrefs" class="more-msgs">
+                                    <a :href="bw.hrefs" class="more-msgs" style="font-size:1.2em;">
                                         <span>阅读更多</span>
                                     </a>
                                 </div>
@@ -233,47 +234,17 @@
                         </div>
                         <!-- /////// -->
                         <ul class="layui-timeline" style="width:92%;margin-left: 4%;margin-top: 10px;">
-                            <li class="layui-timeline-item">
+                            <li class="layui-timeline-item" v-for="sjz in timecar">
                                 <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
                                 <div class="layui-timeline-content layui-text">
-                                    <h3 class="layui-timeline-title">8月18日</h3>
+                                    <h3 class="layui-timeline-title">{{sjz.time}}</h3>
                                     <p>
+                                        {{sjz.msgs1}}
+                                        <br>{{sjz.msgs2}}<i class="layui-icon"></i>
+                                    </p>
+                                </div>
+                            </li>
 
-                                        不枉近百个日日夜夜与之为伴。因小而大，因弱而强。
-                                        <br>无论它能走多远，抑或如何支撑？至少我曾倾注全心，无怨无悔 <i class="layui-icon"></i>
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="layui-timeline-item">
-                                <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
-                                <div class="layui-timeline-content layui-text">
-                                    <h3 class="layui-timeline-title">8月16日</h3>
-                                    <p>杜甫的思想核心是儒家的仁政思想，他有“<em>致君尧舜上，再使风俗淳</em>”的宏伟抱负。个人最爱的名篇有：</p>
-                                    <ul>
-                                        <li>《登高》</li>
-                                        <li>《茅屋为秋风所破歌》</li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="layui-timeline-item">
-                                <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
-                                <div class="layui-timeline-content layui-text">
-                                    <h3 class="layui-timeline-title">8月15日</h3>
-                                    <p>
-                                        中国人民抗日战争胜利72周年
-                                        <br>常常在想，尽管对这个国家有这样那样的抱怨，但我们的确生在了最好的时代
-                                        <br>铭记、感恩
-                                        <br>所有为中华民族浴血奋战的英雄将士
-                                        <br>永垂不朽
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="layui-timeline-item">
-                                <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
-                                <div class="layui-timeline-content layui-text">
-                                    <div class="layui-timeline-title">过去</div>
-                                </div>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -283,16 +254,16 @@
             <div class="tell-me" data-scroll-reveal="enter bottom over 1s">
                 <img class="bgs" src="/static/img/abbg.png" alt="">
                 <div class="touxiang">
-                    <img src="/static/img/kapian/bg3.jpg" alt="">
+                    <img :src="myself.imgs" alt="">
                     <div class="self-msg">
-                        <h2 class="self-name">张三</h2>
-                        <p class="self-heart1">sadasdsd电视台的态度让她</p>
-                        <p class="self-heart2">按实际是的内部覅基本八年级斯蒂芬不回家闪电风暴</p>
+                        <h2 class="self-name"> {{myself.name}}</h2>
+                        <p class="self-heart1"> {{myself.address}}</p>
+                        <p class="self-heart2"> {{myself.rightname}}</p>
                     </div>
                 </div>
                 <div class="talkabout">
                     <h2>随想日记</h2>
-                    <p>不会是绝大部分互动辨识度分别是电话不是的加分</p>
+                    <p>{{myself.msgs}}</p>
                 </div>
             </div>
             <!-- 留言 -->
@@ -302,13 +273,13 @@
                 <div class="liu-msg">
                     <p>请说点什么``` </p>
                     <br> 请输入您的姓名:
-                    <input type="text" name="name" id="name" placeholder="请输入您的姓名"> &nbsp;&nbsp;&nbsp;&nbsp;请输入邮箱:
-                    <input type="text" name="email" id="email" placeholder="请输入您的邮箱">
+                    <input type="text" name="name" id="name" v-model="name" placeholder="请输入您的姓名"> &nbsp;&nbsp;&nbsp;&nbsp;请输入邮箱:
+                    <input type="text" name="email" id="email" v-model="email" placeholder="请输入您的邮箱">
                     <br>
                     <br>
-                    <textarea name="msgss" id="msgss" cols="130" rows="18"></textarea>
+                    <textarea name="msgss" id="msgss" v-model="msgs" cols="130" rows="18"></textarea>
                 </div>
-                <button type="button" id="btn">点击提交</button>
+                <button type="button" v-on:click="btn()" id="btn">点击提交</button>
             </div>
         </div>
         <a href="" class="cd-top"></a>
