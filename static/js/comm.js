@@ -13,7 +13,7 @@ window.onload = function() {
             name: '',
             email: '',
             msgs: '',
-            usermsgs: [], //用户留言
+            // usermsgs: [], //用户留言
         },
         methods: {
             showfir: function() {
@@ -61,20 +61,21 @@ window.onload = function() {
                 })
             },
             btn: function() {
+                var that = this
                 var params = new URLSearchParams();
                 params.append('name', np.name);
                 params.append('email', np.email);
                 params.append('msgs', np.msgs);
                 axios.post('/api/sendmsg', params).then(function(resp) {
+                    location.reload();
                     alert(resp.data)
                 })
             },
-            showusermsgs: function(resp) {
-                axios.get('/api/usermsgs').then(function(resp) {
-                    console.log(resp.data)
-                    np.usermsgs = resp.data
-                })
-            },
+            // showusermsgs: function(resp) {
+            //     axios.get('/api/usermsgs').then(function(resp) {
+            //         np.usermsgs = resp.data
+            //     })
+            // },
 
         },
         mounted: function() {
@@ -86,7 +87,7 @@ window.onload = function() {
             this.showbowen();
             this.showtimecar();
             this.showmyself();
-            this.showusermsgs();
+            // this.showusermsgs();
         }
     })
     $(document).ready(function() {
@@ -192,8 +193,5 @@ window.onload = function() {
         if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))) {
             window.scrollReveal = new scrollReveal({ reset: true });
         };
-
-
-
     });
 }

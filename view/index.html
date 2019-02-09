@@ -6,16 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>index</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/layui/css/layui.css" media="all" />
     <link rel="stylesheet" href="/static/css/index.css">
-    <link rel="stylesheet" href="/static/layui/css/layui.css">
-    <script src="/static/js/jquery.min.js"></script>
+    <!-- <script src="/static/js/jquery.min.js"></script> -->
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <script src="/static/js/jquery.easyfader.min.js"></script>
     <script src="/static/js/hc-sticky.js"></script>
     <script src="https://cdn.bootcss.com/vue/2.5.21/vue.min.js"></script>
     <script src="https://cdn.bootcss.com/axios/0.16.2/axios.min.js"></script>
     <script src="/static/js/scrollReveal.js"></script>
     <script src="/static/js/comm.js"></script>
-    <script src="/static/layui/layui.js"></script>
 </head>
 
 <body>
@@ -113,7 +113,7 @@
                             <li>Python数据处理</li>
                             <li>微信小程序</li>
                         </ul>
-                        <div class="layui-tab-content" style="height: 300px;position: relative;">
+                        <div class="layui-tab-content" style="height: 300px;position: relative;background-color: white;">
                             <div class="layui-tab-item layui-show">
                                 <div class="blogs1-ch1-imgs">
                                     <div class="blogs1-ch1-imgs-chs1">
@@ -280,40 +280,79 @@
                     <textarea name="msgss" id="msgss" v-model="msgs" cols="85" rows="18"></textarea>
                 </div>
                 <button type="button" v-on:click="btn()" id="btn">点击提交</button>
-                <div class="showly">
-                    <div class="showmsgs">
-                        <ul>
-                            <li v-for="um in usermsgs">
-                                <div class="usermsgs">
-                                    <div class="txiang">
-                                        <img src="/static/img/kapian/bg1.jpg" alt="">
-                                    </div>
-                                    <div class="umsgs">
-                                        <p>{{um.name}}</p>
-                                        <p>{{um.time}}</p>
-                                    </div>
-                                </div>
-                                <h3 style="margin-top:8px;font-size: .9em;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{um.msgs}}</h3>
-                            </li>
+                <div id="showly">
 
-                        </ul>
-                    </div>
-                    <div class="fenye"></div>
                 </div>
             </div>
+            <a href="" class="cd-top"></a>
         </div>
-        <a href="" class="cd-top"></a>
-    </div>
 </body>
 
 </body>
+<script src="/static/layui/layui.all.js"></script>
 <script>
+    var laypage;
+    layui.use('laypage', function() {
+        laypage = layui.laypage;
+    });
+
+    function init(pageIndex, pageSize) {
+        $.post('/api/article/page', {
+            pi: pageIndex,
+            ps: pageSize
+        }, function(resp) {
+            console.log(resp)
+            if (resp.code == 200) {
+                var html = '<div class="showmsgs">' + '<ul>';
+                for (var i = 0; i < resp.data.item.length; i++) {
+                    html += '<li>' +
+                        '<div class="usermsgs">' +
+                        '<div class="txiang">' +
+                        '<img src="/static/img/kapian/bg1.jpg" alt="">' +
+                        '</div>' +
+                        '<div class="umsgs">' +
+                        '<p>' + resp.data.item[i].name +
+                        '</p>' +
+                        '<p>' + resp.data.item[i].time +
+                        '</p>' +
+                        '</div>' +
+                        '</div>' +
+                        '<h3 style="margin-top:8px;font-size: .9em;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                        resp.data.item[i].msgs + '</h3>' +
+                        '</li>';
+
+                }
+                html += '</ul>' + '</div>' + '<div id="test1" class="fenye">' + '</div>';
+                document.querySelector("#showly").innerHTML = html;
+                // 生成一个分页导航
+                // 执行一个laypage实例
+
+                laypage.render({
+                    elem: 'test1', //注意，这里的 test1 是 ID，不用加 # 号
+                    limit: pageSize,
+                    groups: 2,
+                    count: resp.data.count, //数据总数，从服务端得到
+                    layout: ["prev", "page", "next", "skip", "count"],
+                    curr: pageIndex,
+                    jump: function(obj, first) {
+                        if (!first) {
+                            console.log(obj.curr)
+                            console.log(obj.limit)
+                            init(obj.curr, obj.limit);
+                        }
+                    },
+                });
+            } else {
+                alert("未查询到数据");
+            }
+        });
+    }
+    init(1, 3);
     //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
     layui.use('element', function() {
         var element = layui.element;
-
-        //…
     });
 </script>
+
 
 </html>

@@ -19,7 +19,11 @@ func main() {
 	http.HandleFunc(`/api/timecar`, control.ShowTimeCar)          //时间轴信息
 	http.HandleFunc(`/api/myself`, control.ShowMyself)            //显示个人信息
 	http.HandleFunc(`/api/sendmsg`, control.SendLY)               //发送留言信息
-	http.HandleFunc(`/api/usermsgs`, control.ShowUserMsgs)        //显示用户留言信息
+	// http.HandleFunc(`/api/usermsgs`, control.ShowUserMsgs)        //显示用户留言信息
+	http.HandleFunc(`/api/article/page`, control.ArtiPage) //分页
 
-	http.ListenAndServe(`:80`, nil)
+	http.ListenAndServe(`:36`, nil)
+	// fmt.Println("123")
+	// http.ListenAndServeTLS(":36", "cert-1542427206238_www.linchongyang.cn.crt", "cert-1542427206238_www.linchongyang.cn.key", nil)
+	// fmt.Println("456")
 }

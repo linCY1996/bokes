@@ -142,13 +142,25 @@ type Liuyan struct {
 }
 
 func SendLY(name, email, msgs, time string) error {
-	_, err := DB.Exec("insert into liuyan(`name`, `email`, `msgs`, `time`) values(?,?,?,?)", name, email, msgs, time)
+	_, err := DB.Exec("insert into ly(`name`, `email`, `msgs`, `time`) values(?,?,?,?)", name, email, msgs, time)
 	return err
 }
 
 //显示用户留言信息
-func ShowUsermsgs() ([]Liuyan, error) {
-	mod := make([]Liuyan, 0)
-	err := DB.Select(&mod, `select * from liuyan`)
+// func ShowUsermsgs() ([]Liuyan, error) {
+// 	mod := make([]Liuyan, 0)
+// 	err := DB.Select(&mod, `select * from liuyan`)
+// 	return mod, err
+// }
+
+func ArticlPage(pi int, ps int) ([]Liuyan, error) {
+	mod := make([]Liuyan, 0, ps)
+	err := DB.Select(&mod, `select * from ly limit ?,?`, (pi-1)*ps, ps)
 	return mod, err
+}
+
+func ArticleCount() (int, error) {
+	var count int
+	err := DB.Get(&count, "SELECT COUNT(id) as count FROM ly")
+	return count, err
 }
