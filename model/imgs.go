@@ -139,10 +139,11 @@ type Liuyan struct {
 	Email string `json:"email" xml:"email",form:"email"`
 	Msgs  string `json:"msgs" xml:"msgs"`
 	Time  string `json:"time" xml:"time"`
+	Imgs  string `json:"imgs" xml:"imgs"`
 }
 
-func SendLY(name, email, msgs, time string) error {
-	_, err := DB.Exec("insert into ly(`name`, `email`, `msgs`, `time`) values(?,?,?,?)", name, email, msgs, time)
+func SendLY(name, email, msgs, time, imgs string) error {
+	_, err := DB.Exec("insert into ly(`name`, `email`, `msgs`, `time`, `imgs`) values(?,?,?,?,?)", name, email, msgs, time, imgs)
 	return err
 }
 

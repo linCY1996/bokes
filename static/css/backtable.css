@@ -1,0 +1,160 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    word-break: break-all;
+}
+
+#tall {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    min-width: 1300px;
+    height: 1500px;
+    /* background-color: rgb(243, 148, 148); */
+}
+
+.left {
+    width: 17%;
+    height: 1500px;
+    background-color: rgb(128, 235, 42);
+}
+
+.selfMsgs {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    background-color: black;
+}
+
+.touxiang {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    top: 16px;
+    left: 10px;
+    border-radius: 50% 50%;
+    overflow: hidden;
+}
+
+.touxiang img {
+    width: 100%;
+    height: 100%;
+}
+
+.msgs {
+    position: absolute;
+    top: 31px;
+    right: -5px;
+    width: 169px;
+    height: 77px;
+    color: rgb(221, 221, 221);
+}
+
+.msgs h3 {
+    font-size: 1.5em;
+    font-family: '楷体';
+}
+
+.msgs p {
+    margin-top: 10px;
+    font-size: 1.3em;
+    font-family: '楷体';
+}
+
+.right {
+    width: 83%;
+    height: 1500px;
+    /* background-color: rgb(60, 240, 186); */
+}
+
+#rightTop1 {
+    width: 100%;
+    height: 1500px;
+    /* background-color: rgb(241, 177, 177); */
+}
+
+#rightTop1 h2 {
+    width: 100%;
+    height: 60px;
+    background-color: rgb(61, 61, 61);
+    color: white;
+    font-size: 1.9em;
+    font-family: '楷体';
+    line-height: 60px;
+}
+
+.tmsgs {
+    position: relative;
+    width: 94%;
+    height: 1420px;
+    margin-left: 3%;
+    background: rgba(107, 48, 0, 0.7);
+}
+
+.tWen {
+    position: absolute;
+    top: 30px;
+    left: 50px;
+    width: 30%;
+    height: 50px;
+    /* border: 1px solid black; */
+    font-size: 1.4em;
+}
+
+.tWen select {
+    width: 191px;
+    height: 46px;
+}
+
+.upMsgs {
+    position: absolute;
+    width: 100%;
+    height: 1000px;
+    top: 120px;
+    border-top: 3px solid black;
+}
+
+.biaoti {
+    margin-top: 30px;
+    margin-left: 50px;
+    width: 33%;
+    height: 250px;
+    border: 1px solid black;
+    font-size: 1.5em;
+    line-height: 60px;
+}
+
+.biaoti input {
+    width: 300px;
+    height: 40px;
+}
+
+.ximgs {
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    background-color: aqua;
+    margin-top: 20px;
+    margin-left: 170px;
+}
+
+.uploader {
+    position: absolute;
+    top: 30px;
+    right: 15%;
+    width: 35%;
+    height: 250px;
+    border: 1px solid black;
+}
+
+#container {
+    width: 99.9%;
+    height: 500px;
+}
+
+.upm {
+    margin-top: 30px;
+    width: 100%;
+    height: 500px;
+    /* border: 1px solid rgb(255, 255, 255); */
+}

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>index</title>
+    <title>个人博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/static/layui/css/layui.css" media="all" />
     <link rel="stylesheet" href="/static/css/index.css">
@@ -22,7 +22,9 @@
     <div id="tall">
 
         <div class="header">
-            <h2>个人博客</h2>
+            <a href="https://linchongyang.cn:36/login">
+                <h2>个人博客</h2>
+            </a>
             <ul class="headers">
                 <a href="">
                     <li>首页</li>
@@ -308,7 +310,7 @@
                     html += '<li>' +
                         '<div class="usermsgs">' +
                         '<div class="txiang">' +
-                        '<img src="/static/img/kapian/bg1.jpg" alt="">' +
+                        '<img src="' + resp.data.item[i].imgs + '">' +
                         '</div>' +
                         '<div class="umsgs">' +
                         '<p>' + resp.data.item[i].name +

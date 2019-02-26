@@ -4,6 +4,8 @@ import (
 	"boke/model"
 	"boke/util"
 	"encoding/json"
+	"fmt"
+	"io/ioutil"
 	"net/http"
 	"strconv"
 	"time"
@@ -126,11 +128,15 @@ func SendLY(w http.ResponseWriter, r *http.Request) {
 	var email = r.FormValue(`email`)
 	var msgs = r.FormValue(`msgs`)
 	var time = time.Now().Format(`2006-01-02`)
+	var im = r.FormValue(`imgs`)
+	// ims, _ := strconv.Atoi(imgs)
+	img := `/static/img/tx` + im + `.jpg`
+	fmt.Println(img)
 	if name == `` || email == `` || msgs == `` {
 		w.Write([]byte(`发送信息不能存在空`))
 		return
 	}
-	err := model.SendLY(name, email, msgs, time)
+	err := model.SendLY(name, email, msgs, time, img)
 
 	w.Header().Set(`Content-Type`, `application/json`)
 	if err != nil {
@@ -169,4 +175,22 @@ func ArtiPage(w http.ResponseWriter, r *http.Request) {
 	// md, _ := json.Marshal(mod)
 	w.Header().Set(`Content-Type`, `application/json`)
 	w.Write(util.NewPage(200, `正常`, mod, count))
+}
+
+//moremsg页面路由
+func Showmoremsg(w http.ResponseWriter, r *http.Request) {
+	buf, _ := ioutil.ReadFile(`view/moremsg.html`)
+	w.Write(buf)
+}
+
+//recommand路由
+func ShowRecommand(w http.ResponseWriter, r *http.Request) {
+	buf, _ := ioutil.ReadFile(`view/recommand.html`)
+	w.Write(buf)
+}
+
+//boke路由
+func ViewBoke(w http.ResponseWriter, r *http.Request) {
+	buf, _ := ioutil.ReadFile(`view/boke.html`)
+	w.Write(buf)
 }

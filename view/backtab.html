@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>后台管理系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/backtable.css">
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="/static/data/dist/webuploader.css">
+    <script src="/static/layui/layui.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="/static/utf8-jsp/ueditor.config.js"></script>
+    <script src="/static/data/dist/jquery.js"></script>
+    <script src="/static/data/dist/webuploader.js"></script>
+    <script src="/static/utf8-jsp/ueditor.all.js"></script>
+    <script src="/static/js/backtab.js"></script>
+</head>
+
+<body>
+    <div id="tall">
+        <div class="left">
+            <div class="selfMsgs">
+                <div class="touxiang">
+                    <img src="/static/img/kapian/bg1.jpg" alt="">
+                </div>
+                <div class="msgs">
+                    <h3>昵称:张三</h3>
+                    <p>账号:616565946</p>
+                </div>
+            </div>
+            <ul class="layui-nav layui-nav-tree" lay-filter="test" style="width:100%;height:1350px;background-color: black;border-top: 1px solid white;">
+                <!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a href="javascript:;">图文信息</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">网站模块</a>
+                </li>
+                <li id="nth" class="layui-nav-item"><a href="javascript:;">程序员要闻</a></li>
+                <li id="nth" class="layui-nav-item"><a href="javascript:;">特别推荐</a></li>
+                <li id="nth" class="layui-nav-item"><a href="javascript:;">最新推荐</a></li>
+                <li id="nth" class="layui-nav-item"><a href="javascript:;">个人博客</a></li>
+                <li id="nth" class="layui-nav-item"><a href="javascript:;">时间轴</a></li>
+                <li id="nth" class="layui-nav-item"><a href="javascript:;">个人信息</a></li>
+                <li id="nth" class="layui-nav-item"><a href="javascript:;">留言板</a></li>
+            </ul>
+        </div>
+        <div class="right">
+            <div id="rightTop1" style="display: block;">
+                <h2>&nbsp;&nbsp;&nbsp;&nbsp;图文信息</h2>
+                <div class="tmsgs">
+                    <div class="tWen">
+                        选择上传条目：<select name="select" id="select">
+                            <option value="条目一">条目一</option>
+                            <option value="条目二">条目二</option>
+                            <option value="条目三">条目三</option>
+                        </select>
+                    </div>
+                    <div class="upMsgs">
+                        <div class="biaoti">
+                            <b>标题：</b><input type="text" name="bt" id="bt">
+                            <br><b>时间：</b><input type="text" name="time" id="time">
+                            <br>
+                            <div id="uploader">
+                                <div id="filePicker">选择图片</div>
+                            </div>
+                        </div>
+                        <div class="uploader" id="list"></div>
+                        <div class="upm">
+                            <script id="container" name="content" type="text/plain">这里写你的初始化内容</script>
+                            <!-- 实例化编辑器 -->
+                            <script>
+                                var ue = UE.getEditor('container');
+                                // var ues = ue
+                                var ues = UE.getContent();
+                                //对编辑器的操作最好在编辑器ready之后再做
+                                ues.ready(function() {
+                                    //设置编辑器的内容
+                                    ues.setContent('hello');
+                                    //获取html内容，返回: <p>hello</p>
+                                    var html = ues.getContent();
+                                    console.log(html)
+                                        //获取纯文本内容，返回: hello
+                                        // $.post('/post/api/msgs', {
+                                        //     html: html
+                                        // }, function(resp) {
+                                        //     console.log(resp.data)
+                                        // })
+
+                                    var txt = ues.getContentTxt();
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="rightTop1" style="display: none;">
+                <h2>&nbsp;&nbsp;&nbsp;&nbsp;网站模块</h2>
+            </div>
+            <div id="rightTop1" style="display: none;">
+                <h2>&nbsp;&nbsp;&nbsp;&nbsp;程序员要闻</h2>
+            </div>
+            <div id="rightTop1" style="display: none;">
+                <h2>&nbsp;&nbsp;&nbsp;&nbsp;特别推荐</h2>
+            </div>
+            <div id="rightTop1" style="display: none;">
+                <h2>&nbsp;&nbsp;&nbsp;&nbsp;最新推荐</h2>
+            </div>
+            <div id="rightTop1" style="display: none;">
+
+                <h2>&nbsp;&nbsp;&nbsp;&nbsp;个人博客</h2>
+            </div>
+            <div id="rightTop1" style="display: none;">
+                <h2>&nbsp;&nbsp;&nbsp;&nbsp;时间轴</h2>
+            </div>
+            <div id="rightTop1" style="display: none;">
+                <h2>&nbsp;&nbsp;&nbsp;&nbsp;个人信息</h2>
+            </div>
+            <div id="rightTop1" style="display: none;">
+                <h2>&nbsp;&nbsp;&nbsp;&nbsp;留言板</h2>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+<script>
+    //注意：导航 依赖 element 模块，否则无法进行功能性操作
+    layui.use('element', function() {
+        var element = layui.element;
+    });
+    window.onload = function() {
+        $(".left li").click(function() {
+            //通过 .index()方法获取元素下标，从0开始，赋值给某个变量
+            var index = $(this).index();
+            //让内容框的第 _index 个显示出来，其他的被隐藏
+            $(".right>div").eq(index).show().siblings().hide();
+            //改变选中时候的选项框的样式，移除其他几个选项的样式
+            $(this).addClass("change").siblings().removeClass("change");
+            // $(this).addClass("change").show();
+        });
+    }
+</script>
+
+</html>0

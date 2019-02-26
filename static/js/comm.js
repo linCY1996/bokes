@@ -62,10 +62,13 @@ window.onload = function() {
             },
             btn: function() {
                 var that = this
+                    // var p = Math.floor(Math.random() * 12 + 1)
+                    // console.log("p=" + p)
                 var params = new URLSearchParams();
                 params.append('name', np.name);
                 params.append('email', np.email);
                 params.append('msgs', np.msgs);
+                params.append('imgs', Math.floor(Math.random() * 12 + 1));
                 axios.post('/api/sendmsg', params).then(function(resp) {
                     location.reload();
                     alert(resp.data)
